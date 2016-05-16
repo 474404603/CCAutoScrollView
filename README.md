@@ -1,0 +1,2 @@
+# CCAutoScrollView
+一个支持view和图片类型的ScrollView滚动视图，图片支持本地图片和网络图片。
