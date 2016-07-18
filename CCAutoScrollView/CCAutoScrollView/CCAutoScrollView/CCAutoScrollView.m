@@ -19,14 +19,12 @@ NSString * const CellViewID = @"CCViewCollectionCell";
 
 
 @interface CCAutoScrollView()<UICollectionViewDataSource,UICollectionViewDelegate>{
-    
     //页数
     NSInteger totalItemsCount;
-    
     //一个定时器
     NSTimer *timer;
 }
-
+@property (nonatomic, strong) CCViewCollectionCell *prototypeCell;
 @end
 
 
@@ -227,12 +225,12 @@ NSString * const CellViewID = @"CCViewCollectionCell";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger index = indexPath.item % self.imagesGroup.count;
-    if (self.delegate == nil) {
+    if (_delegate == nil) {
         NSLog(@"Important!! AutoScrollViewDelegate Not Set!");
         
     }
-    if ([self.delegate respondsToSelector:@selector(autoScrollView:didSelectItemAtIndex:)]) {
-        [self.delegate autoScrollView:self didSelectItemAtIndex:index];
+    if ([_delegate respondsToSelector:@selector(autoScrollView:didSelectItemAtIndex:)]) {
+        [_delegate autoScrollView:self didSelectItemAtIndex:index];
     }
     
 }
@@ -361,6 +359,7 @@ NSString * const CellViewID = @"CCViewCollectionCell";
 {
     _mainCollectionView.delegate = nil;
     _mainCollectionView.dataSource = nil;
+    _delegate = nil;
     
 }
 @end

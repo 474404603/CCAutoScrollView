@@ -10,7 +10,7 @@
 #import "CCAutoScrollView.h"
 #import "LexiconHeadView.h"
 
-@interface ViewController ()
+@interface ViewController ()<AutoScrollViewDelegate>
 
 @end
 
@@ -43,7 +43,7 @@
     
     //VIEW类型
     CCAutoScrollView *viewScrollView = [[CCAutoScrollView alloc] initWithFrame:CGRectMake(10, 450, self.view.bounds.size.width-20, 150) withSylteType:ViewSylteType];
-    
+    viewScrollView.delegate = self;
     
     NSMutableArray *viewArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < 4; i++) {
@@ -57,6 +57,13 @@
     [self.view addSubview:viewScrollView];
 }
 
+
+- (void)autoScrollView:(CCAutoScrollView *)collectionView didSelectItemAtIndex:(NSInteger)index
+{
+
+   
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

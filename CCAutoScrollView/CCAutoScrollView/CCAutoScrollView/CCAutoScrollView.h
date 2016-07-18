@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
+/** 风格 */
 typedef enum : NSInteger {
     
     ViewSylteType,   //一个view的类型
@@ -17,6 +17,7 @@ typedef enum : NSInteger {
     
 } CellSylteType;
 
+/** PageControl的位置 */
 typedef enum : NSInteger {
     LeftPageControl,
     RightPageControl,
@@ -24,11 +25,13 @@ typedef enum : NSInteger {
     
 } PageControlPosition;
 
+
 @class CCAutoScrollView;
 @protocol AutoScrollViewDelegate <NSObject>
 @optional
 - (void)autoScrollView:(CCAutoScrollView *)collectionView didSelectItemAtIndex:(NSInteger)index;
 
+//滑动到那个下标
 - (void)autoScrollView:(CCAutoScrollView *)collectionView didScrollIndex:(NSInteger)index;
 
 @end
@@ -68,5 +71,6 @@ typedef enum : NSInteger {
 @property(nonatomic,assign) id <AutoScrollViewDelegate>delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame withSylteType:(CellSylteType)type;
+
 
 @end
